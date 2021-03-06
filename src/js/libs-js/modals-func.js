@@ -2,6 +2,8 @@
 
 const showModals = (elem) => {
 	elem.style.display = 'block';
+	elem.classList.add('animated', 'fadeIn');
+	elem.style.animationDuration = '0.6s';
 	document.body.style.overflow = 'hidden';
 	document.body.style.marginRight = `${scrollWidth}px`;
 };
