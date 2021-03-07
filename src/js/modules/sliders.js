@@ -6,7 +6,6 @@ const sliders = (slides, dir, prev, next) => {
 
 	const items = document.querySelectorAll(slides);
 
-
 	function showSlides(n) {
 		if (n > items.length) {
 			slideIndex = 1;
@@ -48,7 +47,9 @@ const sliders = (slides, dir, prev, next) => {
 
 	function activateAnimation() {
 		if (dir === 'vertical') {
+
 			document.querySelector('.main-slider').style.overflow = 'hidden';
+
 			paused = setInterval(function () {
 				plusSlides(1);
 				items[slideIndex - 1].classList.add('slideInDown');
