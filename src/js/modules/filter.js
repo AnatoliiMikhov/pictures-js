@@ -1,26 +1,13 @@
 const filter = () => {
-
 	const menu = document.querySelector('.portfolio-menu'),
-		items = menu.querySelectorAll('li'),
-		btnAll = menu.querySelector('.all'),
-		btnLovers = menu.querySelector('.lovers'),
-		btnChef = menu.querySelector('.chef'),
-		btnGirl = menu.querySelector('.girl'),
-		btnGuy = menu.querySelector('.guy'),
-		btnGrandmother = menu.querySelector('.grandmother'),
-		btnGranddad = menu.querySelector('.granddad');
+		items = menu.querySelectorAll('li');
 
 	const wrapper = document.querySelector('.portfolio-wrapper'),
 		markAll = wrapper.querySelectorAll('.all'),
-		markGirl = wrapper.querySelectorAll('.girl'),
-		markLovers = wrapper.querySelectorAll('.lovers'),
-		markChef = wrapper.querySelectorAll('.chef'),
-		markGuy = wrapper.querySelectorAll('.guy');
-
-	const no = document.querySelector('.portfolio-no');
+		no = document.querySelector('.portfolio-no');
 
 	const typeFilter = (markType) => {
-		markAll.forEach(mark => {
+		markAll.forEach((mark) => {
 			mark.style.display = 'none';
 			mark.classList.remove('animated', 'fadeIn');
 		});
@@ -29,39 +16,31 @@ const filter = () => {
 		no.classList.remove('animated', 'fadeIn');
 
 		if (markType) {
-			markType.forEach(mark => {
+			markType.forEach((mark) => {
 				mark.style.display = 'block';
 				mark.classList.add('animated', 'fadeIn');
 			});
-		} else {
+		}
+		if (markType.length == 0) {
 			no.style.display = 'block';
 			no.classList.add('animated', 'fadeIn');
 		}
 	};
 
-	const useFilter = (btn, elements = '') => {
-		btn.addEventListener('click', () => {
-			typeFilter(elements);
-		});
-	};
-
-	useFilter(btnAll, markAll);
-	useFilter(btnLovers, markLovers);
-	useFilter(btnChef, markChef);
-	useFilter(btnGuy, markGuy);
-	useFilter(btnGirl, markGirl);
-	useFilter(btnGrandmother);
-	useFilter(btnGranddad);
+	menu.addEventListener('click', (e) => {
+		let classSelect = e.target.classList[0];
+		let allElems = wrapper.querySelectorAll(`.${classSelect}`);
+		typeFilter(allElems);
+	});
 
 	menu.addEventListener('click', (e) => {
 		let target = e.target;
 
-		if (target && target.tagName == 'LI') {
-			items.forEach(btn => btn.classList.remove('active'));
+		if (target && target.tagName === 'LI') {
+			items.forEach((btn) => btn.classList.remove('active'));
 			target.classList.add('active');
 		}
 	});
-
 };
 
 export default filter;
