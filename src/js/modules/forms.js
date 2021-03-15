@@ -77,11 +77,20 @@ const forms = () => {
 			/* -------------------------------- formData -------------------------------- */
 			const formData = new FormData(item);
 
-			const api = item.closest('.popup-design') || item.classList.contains('calc_form') ?
+			if (item.getAttribute('data-calc') === 'calc') {
+				formData.append('totalPrice', document.querySelector('.calc-price').textContent);
+
+				const formChild = item.children;
+				for (let elem of formChild) {
+					if (elem.nodeName === 'SELECT') {
+						formData.append(elem.id, elem.options[elem.options.selectedIndex].textContent);
+					}
+				}
+			}
+
+			const api = item.closest('.popup-design') || item.classList.contains('calc-form') ?
 				path.designer :
 				path.question;
-
-			console.log('the api: ' + api);
 
 			postData(api, formData)
 				.then(res => {
