@@ -70,11 +70,7 @@ const filter = () => {
 	menu.addEventListener('click', (e) => {
 		let target = e.target;
 
-<<<<<<< HEAD
 		if (target && target.tagName == 'LI') {
-=======
-		if (target && target.tagName == "LI") {
->>>>>>> 6e228a3ad23c8247708a5a97c89e450fc92fbd61
 			items.forEach(btn => btn.classList.remove('active'));
 			target.classList.add('active');
 		}
