@@ -1,17 +1,14 @@
-const accordion = (triggersSelector, contentSelector) => {
-  const btns = document.querySelectorAll(triggersSelector),
-    blocks = document.querySelectorAll(contentSelector);
+const accordion = (triggersSelector) => {
+  const btns = document.querySelectorAll(triggersSelector);
 
   btns.forEach((btn) => {
     btn.addEventListener("click", function () {
       if (!this.classList.contains("active-style")) {
         btns.forEach((btn) => {
           btn.classList.remove("active-style");
-        });
 
-        blocks.forEach((block) => {
-          block.classList.remove("active-content");
-          block.style.maxHeight = "0";
+          this.nextElementSibling.classList.remove("active-content");
+          this.nextElementSibling.style.maxHeight = "0";
         });
       }
 
