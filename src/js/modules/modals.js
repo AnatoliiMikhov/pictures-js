@@ -1,4 +1,4 @@
-import {showModals, showModalByTime, hideModals} from '../libs-js/modals-func';
+import { showModals, showModalByTime, hideModals } from '../libs-js/modals-func';
 
 const modals = () => {
 	'use strict';
@@ -6,13 +6,12 @@ const modals = () => {
 	let btnPressed = false;
 
 	function bindModal(triggerSelector, modalSelector, closeSelector, destroy = false) {
-
 		const trigger = document.querySelectorAll(triggerSelector),
 			modal = document.querySelector(modalSelector),
 			close = document.querySelector(closeSelector);
 
 		/* --------------------------------- events --------------------------------- */
-		trigger.forEach(item => {
+		trigger.forEach((item) => {
 			item.addEventListener('click', (e) => {
 				if (e.target) {
 					e.preventDefault();
@@ -43,7 +42,7 @@ const modals = () => {
 	const openByScroll = (selector) => {
 		window.addEventListener('scroll', () => {
 			let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
-			if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight) >= scrollHeight) {
+			if (!btnPressed && window.pageYOffset + document.documentElement.clientHeight >= scrollHeight) {
 				document.querySelector(selector).click();
 			}
 		});

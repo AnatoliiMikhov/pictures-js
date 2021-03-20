@@ -1,4 +1,4 @@
-import {postData} from '../services/requests';
+import { postData } from '../services/requests';
 
 const forms = () => {
 	'use strict';
@@ -15,31 +15,31 @@ const forms = () => {
 		failure: 'Данные не отправлены<br>Проверьте подключение к интернету...',
 		spinner: 'assets/img/spinner.gif',
 		ok: 'assets/img/ok.png',
-		fail: 'assets/img/fail.png'
+		fail: 'assets/img/fail.png',
 	};
 
 	const path = {
 		designer: 'assets/server.php',
-		question: 'assets/question.php'
+		question: 'assets/question.php',
 	};
 
 	/* ------------------------------ clear inputs ------------------------------ */
 	const clearFields = () => {
-		inputs.forEach(item => {
+		inputs.forEach((item) => {
 			item.value = '';
 		});
 
-		textArea.forEach(item => {
+		textArea.forEach((item) => {
 			item.value = '';
 		});
 
-		uploadInput.forEach(item => {
+		uploadInput.forEach((item) => {
 			item.previousElementSibling.textContent = 'Файл не выбран';
 		});
 	};
 
 	/* ------------------------------- uploadInput ------------------------------ */
-	uploadInput.forEach(item => {
+	uploadInput.forEach((item) => {
 		item.addEventListener('input', () => {
 			let dots;
 			const arr = item.files[0].name.split('.');
@@ -53,7 +53,7 @@ const forms = () => {
 
 	/* ------------------------------- submit form ------------------------------ */
 
-	form.forEach(item => {
+	form.forEach((item) => {
 		item.addEventListener('submit', (e) => {
 			e.preventDefault();
 
@@ -88,12 +88,10 @@ const forms = () => {
 				}
 			}
 
-			const api = item.closest('.popup-design') || item.classList.contains('calc-form') ?
-				path.designer :
-				path.question;
+			const api = item.closest('.popup-design') || item.classList.contains('calc-form') ? path.designer : path.question;
 
 			postData(api, formData)
-				.then(res => {
+				.then((res) => {
 					console.log(res);
 					statusImg.setAttribute('src', message.ok);
 					textMessage.textContent = message.success;

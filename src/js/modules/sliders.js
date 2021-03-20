@@ -13,7 +13,7 @@ const sliders = (slides, dir, prev, next) => {
 			slideIndex = items.length;
 		}
 
-		items.forEach(item => {
+		items.forEach((item) => {
 			item.classList.add('animated');
 			item.style.display = 'none';
 		});
@@ -24,7 +24,7 @@ const sliders = (slides, dir, prev, next) => {
 	showSlides(slideIndex);
 
 	function plusSlides(n) {
-		showSlides(slideIndex += n);
+		showSlides((slideIndex += n));
 	}
 
 	try {
@@ -42,12 +42,10 @@ const sliders = (slides, dir, prev, next) => {
 			items[slideIndex - 1].classList.remove('slideInLeft');
 			items[slideIndex - 1].classList.add('slideInRight');
 		});
-
-	} catch (error) { }
+	} catch (error) {}
 
 	function activateAnimation() {
 		if (dir === 'vertical') {
-
 			document.querySelector('.main-slider').style.overflow = 'hidden';
 
 			paused = setInterval(function () {
@@ -72,7 +70,6 @@ const sliders = (slides, dir, prev, next) => {
 	items[0].parentNode.addEventListener('mouseleave', () => {
 		activateAnimation();
 	});
-
 };
 
 export default sliders;

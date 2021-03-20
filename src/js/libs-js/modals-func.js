@@ -10,7 +10,7 @@ const showModals = (elem) => {
 
 const hideModals = () => {
 	const windows = document.querySelectorAll('[data-modal]');
-	windows.forEach(item => {
+	windows.forEach((item) => {
 		item.style.display = 'none';
 		document.body.style.overflow = '';
 		document.body.style.marginRight = '0';
@@ -34,7 +34,7 @@ const showModalByTime = (selector, time) => {
 	setTimeout(() => {
 		let display;
 
-		document.querySelectorAll('[data-modal]').forEach(item => {
+		document.querySelectorAll('[data-modal]').forEach((item) => {
 			if (getComputedStyle(item).display !== 'none') {
 				display = 'block';
 			}
@@ -50,4 +50,4 @@ const showModalByTime = (selector, time) => {
 
 const scrollWidth = calcScroll();
 
-export {showModals, showModalByTime, hideModals};
+export { showModals, showModalByTime, hideModals };

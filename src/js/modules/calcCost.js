@@ -8,12 +8,12 @@ const calcCost = (size, material, options, promocode, result) => {
 	let totalCost = 0;
 
 	const calcCost = () => {
-		totalCost = Math.round((+sizeSelectElem.value) * (+materialSelectElem.value) + (+optionsSelectElem.value));
+		totalCost = Math.round(+sizeSelectElem.value * +materialSelectElem.value + (+optionsSelectElem.value));
 
 		if (sizeSelectElem.value == '' || materialSelectElem.value == '') {
 			totalCostElem.textContent = 'Пожалуйста, выберите размер и материал картины';
 		} else if (promocodeElem.value == 'IWANTPOPART') {
-			totalCostElem.textContent ='Со скидкой: ' + (Math.round(totalCost * 0.7));
+			totalCostElem.textContent = 'Со скидкой: ' + Math.round(totalCost * 0.7);
 		} else {
 			totalCostElem.textContent = totalCost;
 		}
@@ -23,7 +23,6 @@ const calcCost = (size, material, options, promocode, result) => {
 	materialSelectElem.addEventListener('change', calcCost);
 	optionsSelectElem.addEventListener('change', calcCost);
 	promocodeElem.addEventListener('input', calcCost);
-
 };
 
 export default calcCost;
