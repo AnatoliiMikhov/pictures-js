@@ -6,9 +6,8 @@ const accordion = (triggersSelector) => {
       if (!this.classList.contains("active-style")) {
         btns.forEach((btn) => {
           btn.classList.remove("active-style");
-
-          this.nextElementSibling.classList.remove("active-content");
-          this.nextElementSibling.style.maxHeight = "0";
+          btn.nextElementSibling.classList.remove("active-content");
+          btn.nextElementSibling.style.maxHeight = "0";
         });
       }
 
