@@ -88,7 +88,10 @@ const forms = () => {
 				}
 			}
 
-			const api = item.closest('.popup-design') || item.classList.contains('calc-form') ? path.designer : path.question;
+			const api =
+				item.closest('.popup-design') || item.classList.contains('calc-form')
+					? path.designer
+					: path.question;
 
 			postData(api, formData)
 				.then((res) => {
